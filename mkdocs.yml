@@ -11,7 +11,7 @@ theme:
         repo: fontawesome/brands/github-alt
 
 repo_name: triaxtec/fastapi-serverless-cookiecutter
-repo_url: https://github.com/triaxtec/fastapi-serverless-cookicutter
+repo_url: https://github.com/triaxtec/fastapi-serverless-cookiecutter
 edit_uri: ''
 
 nav:
