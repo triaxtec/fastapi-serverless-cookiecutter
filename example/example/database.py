@@ -11,7 +11,7 @@ SessionLocal: Optional[sessionmaker] = None
 engine: Optional[Engine] = None
 
 
-def init_db():
+def init_db() -> None:
     """ Initialize database connections based on config """
     from .config import get_config
 

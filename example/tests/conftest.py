@@ -17,9 +17,12 @@ def _config():
 
 # noinspection PyUnresolvedReferences
 @pytest.yield_fixture
-def session(_app, _config) -> Session:
+def session(_app, _config, request) -> Session:
     from example.database import SessionLocal, Base, get_session
     from example import models
+
+    if "mock_session" in request.fixturenames:
+        raise ImportError("You cannot use both session and mock_session in a single test")
 
     Base.metadata.drop_all()
     Base.metadata.create_all()
@@ -33,8 +36,11 @@ def session(_app, _config) -> Session:
 
 
 @pytest.fixture
-def mock_session(_app, mocker) -> MagicMock:
+def mock_session(_app, mocker, request) -> MagicMock:
     from example.database import get_session
+
+    if "session" in request.fixturenames:
+        raise ImportError("You cannot use both session and mock_session in a single test")
 
     mock_session = mocker.MagicMock()
 
