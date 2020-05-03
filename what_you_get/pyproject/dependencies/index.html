@@ -1,0 +1,684 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Generate FastAPI projects to deploy with Serverless.">
+      
+      
+        <link rel="canonical" href="https://triaxtec.github.io/fastapi-serverless-cookiecutter/what_you_get/pyproject/dependencies/">
+      
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>Dependencies - FastAPI Serverless</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.df84b5fe.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.8435c73a.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="green">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dependencies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://triaxtec.github.io/fastapi-serverless-cookiecutter" title="FastAPI Serverless" class="md-header-nav__button md-logo" aria-label="FastAPI Serverless">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            FastAPI Serverless
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Dependencies
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/triaxtec/fastapi-serverless-cookicutter" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    triaxtec/fastapi-serverless-cookiecutter
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://triaxtec.github.io/fastapi-serverless-cookiecutter" title="FastAPI Serverless" class="md-nav__button md-logo" aria-label="FastAPI Serverless">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FastAPI Serverless
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/triaxtec/fastapi-serverless-cookicutter" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    triaxtec/fastapi-serverless-cookiecutter
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Intro" class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../next_steps/" title="Next Steps" class="md-nav__link">
+      Next Steps
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      What's in the Box?
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="What's in the Box?" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        What's in the Box?
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../top_level/" title="Top Level" class="md-nav__link">
+      Top Level
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
+    
+    <label class="md-nav__link" for="nav-3-2">
+      pyproject.toml
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="pyproject.toml" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        pyproject.toml
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="What You Get - pyproject.toml" class="md-nav__link">
+      What You Get - pyproject.toml
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../private_pypi/" title="Private PyPI" class="md-nav__link">
+      Private PyPI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Dependencies" class="md-nav__link md-nav__link--active">
+      Dependencies
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dev_dependencies/" title="Dev Dependencies" class="md-nav__link">
+      Dev Dependencies
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cli/" title="CLI Entrypoint" class="md-nav__link">
+      CLI Entrypoint
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../taskipy/" title="Tasks" class="md-nav__link">
+      Tasks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../black/" title="Black" class="md-nav__link">
+      Black
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../isort/" title="isort" class="md-nav__link">
+      isort
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../coverage/" title="coverage" class="md-nav__link">
+      coverage
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h1>
+<p>These are all the packages that this cookiecutter will include for your project to use at runtime. The relevant section 
+in <code>pyproject.toml</code> is highlighted below for reference.</p>
+<ol>
+<li><a href="https://fastapi.tiangolo.com/">fastapi</a>: The basis for your whole project!</li>
+<li><a href="https://erm.github.io/mangum/introduction/">mangum</a>: The key to getting FastAPI running in Lambda</li>
+<li><a href="https://www.sqlalchemy.org/">sqlalchemy</a>: An ORM- the best fully-featured ORM we've found.</li>
+<li><a href="https://alembic.sqlalchemy.org/en/latest/">alembic</a>: For managing database migrations with SQLAlchemy</li>
+<li><a href="https://pymysql.readthedocs.io/en/latest/">pymysql</a>: A MySQL driver for Python- required to hook up SQLAlchemy to MySQL</li>
+<li><code>triax-flex-config</code>: A package we developed to make configuring web apps easier.</li>
+<li><a href="https://python-semanticversion.readthedocs.io/en/latest/">semantic-version</a>: Python does some weird stuff with your project version- we use this to make the published 
+    version (in the OpenAPI document) follow standard <a href="https://semver.org/">Semantic Versioning</a>.</li>
+<li><a href="https://python-markdown.github.io/">markdown</a>: For publishing CHANGELOG.md with the API so consumers can know what's going on.</li>
+<li><a href="https://secure.readthedocs.io/en/latest/">secure</a>: For setting some security settings (e.g. HSTS header in responses)</li>
+</ol>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">[tool.poetry]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;example&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">&quot;A Fast API&quot;</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># You can put your name/email here if you like</span>
+<span class="n">readme</span> <span class="o">=</span> <span class="s">&quot;README.md&quot;</span>
+<span class="n">packages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="n">include</span> <span class="o">=</span> <span class="s">&quot;example&quot;</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;Private :: Not For Publishing!&quot;</span>  <span class="c1"># Prevents this from being accidentally published to public PyPI</span>
+<span class="p">]</span>
+<span class="n">include</span> <span class="o">=</span> <span class="k">[&quot;example/CHANGELOG.md&quot;, &quot;example/rds-ca-2019-root.pem&quot;]</span>
+
+<span class="k">[[tool.poetry.source]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;private&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&quot;https://pypi.fury.io/my-org/&quot;</span>
+
+<span class="hll"><span class="k">[tool.poetry.dependencies]</span>
+</span><span class="n">python</span> <span class="o">=</span> <span class="s">&quot;==3.*,&gt;=3.8.0&quot;</span>
+<span class="hll"><span class="n">fastapi</span> <span class="o">=</span> <span class="s">&quot;&gt;=0.53.0&quot;</span>
+</span><span class="hll"><span class="n">mangum</span> <span class="o">=</span> <span class="s">&quot;^0.8.0&quot;</span>
+</span><span class="hll"><span class="n">sqlalchemy</span> <span class="o">=</span> <span class="s">&quot;^1.3.10&quot;</span>
+</span><span class="hll"><span class="n">pymysql</span> <span class="o">=</span> <span class="s">&quot;^0.9.3&quot;</span>
+</span><span class="hll"><span class="n">secure</span> <span class="o">=</span> <span class="s">&quot;^0.2.1&quot;</span>
+</span><span class="hll"><span class="n">triax-flex-config</span> <span class="o">=</span> <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;^1.1.0&quot;</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;aws&quot;</span><span class="p">]}</span>
+</span><span class="hll"><span class="n">semantic-version</span> <span class="o">=</span> <span class="s">&quot;^2.8.4&quot;</span>
+</span><span class="hll"><span class="n">markdown</span> <span class="o">=</span> <span class="s">&quot;^3.1.1&quot;</span>
+</span>
+<span class="k">[tool.poetry.dev-dependencies]</span>
+<span class="n">uvicorn</span> <span class="o">=</span> <span class="s">&quot;^0.11.3&quot;</span>
+<span class="n">pytest</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<span class="n">pytest-mock</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<span class="n">pytest-cov</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<span class="n">mypy</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<span class="n">sqlalchemy-stubs</span> <span class="o">=</span> <span class="s">&quot;&gt;=0.3&quot;</span>
+<span class="n">safety</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<span class="n">black</span> <span class="o">=</span> <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;&gt;=19.10b&quot;</span><span class="p">,</span> <span class="n">allow-prereleases</span> <span class="o">=</span> <span class="n">true</span><span class="p">}</span>
+<span class="n">taskipy</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<span class="n">isort</span> <span class="o">=</span> <span class="s">&quot;*&quot;</span>
+<span class="n">typer</span> <span class="o">=</span> <span class="s">&quot;^0.2.1&quot;</span>
+<span class="n">alembic</span> <span class="o">=</span> <span class="s">&quot;^1.3.2&quot;</span>
+
+<span class="k">[tool.poetry.scripts]</span>
+<span class="n">example</span> <span class="o">=</span> <span class="s">&quot;cli:cli&quot;</span>  <span class="c1"># For running management CLI in cli.py</span>
+
+<span class="k">[tool.taskipy.tasks]</span>
+<span class="n">migrate</span> <span class="o">=</span> <span class="s">&quot;alembic revision --autogenerate -m &quot;</span>
+<span class="n">upgrade</span> <span class="o">=</span> <span class="s">&quot;alembic upgrade heads&quot;</span>
+<span class="n">downgrade</span> <span class="o">=</span> <span class="s">&quot;alembic downgrade -1&quot;</span>
+<span class="n">upgrade_dev</span> <span class="o">=</span> <span class="s">&quot;alembic -x env=dev upgrade heads&quot;</span>
+<span class="n">downgrade_dev</span> <span class="o">=</span> <span class="s">&quot;alembic -x env=dev downgrade -1&quot;</span>
+<span class="n">upgrade_live</span> <span class="o">=</span> <span class="s">&quot;alembic -x env=live upgrade heads&quot;</span>
+<span class="n">downgrade_live</span> <span class="o">=</span> <span class="s">&quot;alembic -x env=live downgrade -1&quot;</span>
+<span class="n">check</span> <span class="o">=</span> <span class="s">&quot;safety check &amp;&amp; isort --recursive --apply &amp;&amp; black . &amp;&amp; mypy example &amp;&amp; pytest --cov=example&quot;</span>
+
+<span class="k">[tool.black]</span>
+<span class="n">line-length</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">target_version</span> <span class="o">=</span> <span class="k">[&#39;py38&#39;]</span>
+<span class="n">exclude</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">(</span>
+<span class="s">  /(</span>
+<span class="s">    | \.git</span>
+<span class="s">    | \.venv</span>
+<span class="s">    | \.mypy_cache</span>
+<span class="s">  )/</span>
+<span class="s">)</span>
+<span class="s">&#39;&#39;&#39;</span>
+
+<span class="k">[tool.isort]</span>
+<span class="n">line_length</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">skip</span> <span class="o">=</span> <span class="s">&quot;migrations,.serverless,.venv,node_modules&quot;</span>
+<span class="n">multi_line_output</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">include_trailing_comma</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="k">[tool.coverage.run]</span>
+<span class="n">omit</span> <span class="o">=</span> <span class="k">[&quot;example/__init__.py&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../private_pypi/" title="Private PyPI" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Private PyPI
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../dev_dependencies/" title="Dev Dependencies" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Dev Dependencies
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
