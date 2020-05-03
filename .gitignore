@@ -3,3 +3,6 @@
 
 # Python stuff
 .venv
+
+# mkdocs
+site/

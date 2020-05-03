@@ -15,6 +15,7 @@ from . import database
 from .config import get_config
 from .routers import register_routers
 
+
 # Convert PyPIs non-standard versioning to real semver
 app_version = str(Version.coerce(version(__package__)))
 if (match := re.match(r".+\-(\D+)(\d+)", app_version)) is not None:  # pragma: nocover
@@ -51,7 +52,6 @@ if sentry_url := _config.get("sentry/url"):  # pragma: no cover
         release=f"example@{app_version}",
     )
     app.add_middleware(SentryAsgiMiddleware)
-
 
 if scout_config := _config.get("scout"):  # pragma: no cover
     from scout_apm.api import Config

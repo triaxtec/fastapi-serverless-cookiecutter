@@ -8,3 +8,4 @@
 [Serverless]: https://www.serverless.com/
 [isort]: https://pypi.org/project/isort/
 [Coverage]: https://coverage.readthedocs.io/en/coverage-5.1/
+[black]: https://black.readthedocs.io/en/stable/

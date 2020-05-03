@@ -1,7 +1,7 @@
 import re
 from getpass import getpass
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 from flex_config import AWSSource, EnvSource, FlexConfig, YAMLSource
 
@@ -14,7 +14,7 @@ default_config = {
 }
 
 
-def get_config(override: Dict = None, prompt_db_creds=False) -> FlexConfig:
+def get_config(override: Dict[str, Any] = None, prompt_db_creds: bool = False) -> FlexConfig:
     """ Get the app config for this  """
     global _app_config
 

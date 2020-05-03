@@ -24,6 +24,5 @@ These are all the packages that this cookiecutter will include for your project 
 [mypy]: http://mypy-lang.org/
 [sqlalchemy-stubs]: https://github.com/dropbox/sqlalchemy-stubs
 [safety]: https://pypi.org/project/safety/
-[black]: https://black.readthedocs.io/en/stable/
 [pytest-cov]: https://pytest-cov.readthedocs.io/en/latest/
 {!./hyperlinks.md!}
