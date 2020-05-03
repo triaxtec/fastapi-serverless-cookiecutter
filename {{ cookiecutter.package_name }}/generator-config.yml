@@ -1,0 +1,6 @@
+npmName: {{ cookiecutter.package_name }}-angular-client
+npmRepository: {{ cookiecutter.npm_url }}
+ngVersion: 9.1.0
+modelPropertyNaming: snake_case
+stringEnums: true
+enumPropertyNaming: UPPERCASE

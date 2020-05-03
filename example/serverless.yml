@@ -1,0 +1,94 @@
+service: example
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  pythonRequirements:
+    dockerizePip: non-linux
+    usePoetry: false
+    zip: true
+    slim: true
+  SSM: <put your SSM ARN here>
+  KMS:
+    dev: <put your KMS ARN here>
+    live: <put your KMS ARN here>
+  domains:
+    dev: <dev domain name>
+    live: <prod domain name>
+  dbSecurityGroup:
+    dev: <security group for dev database>
+    live: <secureity group for live database>
+  customDomain:
+    basePath: ""
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    stage: "${self:custom.stage}"
+    createRoute53Record: true
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-1
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ssm:GetParametersByPath"
+        - "ssm:GetParameters"
+        - "ssm:GetParameter"
+      Resource: "${self:custom.SSM}/example/${self:custom.stage}/*"
+    - Effect: "Allow"
+      Action:
+        - "kms:Decrypt"
+      Resource: ${self:custom.KMS.${self:custom.stage}}
+    - Effect: "Allow"
+      Action:
+        - "ses:SendRawEmail"
+        - "ses:SendTemplatedEmail"
+        - "ses:SendEmail"
+      Resource: "*"
+
+functions:
+  example:
+    handler: example.handler
+    vpc:
+      securityGroupIds:
+        - ${self:custom.dbSecurityGroup.${self:custom.stage}}
+      subnetIds: []  # Put your subnetIDs here
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: /{proxy+}
+    environment:
+      EXAMPLE_ENV: ${self:custom.stage}
+      EXAMPLE_LAMBDA: true
+
+plugins:
+  - serverless-python-requirements
+  - serverless-domain-manager
+
+package:
+  exclude:
+    - node_modules/**
+    - .venv/**
+    - config.yml
+    - sample-config.yml
+    - tests
+    - migrations
+    - terraform
+    - requirements.txt
+    - example.egg-info
+    - pyproject.toml
+    - poetry.lock
+    - generator-config.yml
+    - generate_angular_client.sh
+    - cli.py
+    - alembic.ini
+    - .pre-commit-config.yaml
+    - .gitignore
+    - .coverage
+    - .mypy_cache/**
+    - .pytest_cache/**
+    - mypy.ini

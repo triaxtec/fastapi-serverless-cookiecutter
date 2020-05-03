@@ -1,0 +1,28 @@
+# Python stuff
+__pycache__/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.python-version
+
+# Environments
+.env
+.venv
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# JetBrains
+.idea/*
+!.idea/runConfigurations/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Serverless
+.serverless
+node_modules

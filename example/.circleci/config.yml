@@ -1,0 +1,173 @@
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.5
+  aws-cli: circleci/aws-cli@1.0.0
+
+commands:
+  setup:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "poetry.lock" }}
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            pip install poetry --user --upgrade
+            poetry config virtualenvs.in-project true
+            poetry config repositories.private https://pypi.fury.io/my-org/
+            poetry config http-basic.private "$GEMFURY_PULL_TOKEN" "$GEMFURY_PULL_TOKEN"
+            poetry install
+
+  generate_client:
+    steps:
+      - run:
+          name: Generate New Client
+          command: ./generate_angular_client.sh
+
+  build:
+    steps:
+      - setup
+      - run:
+          name: Generate Requirements
+          command: poetry export -f requirements.txt -o requirements.txt --with-credentials --without-hashes
+      - setup_remote_docker
+      - aws-cli/setup
+      - restore_cache:
+          keys:
+            - node-modules-{{ checksum "package-lock.json" }}
+            - node-modules-
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
+      - save_cache:
+          key: node-modules-{{ checksum "package-lock.json" }}
+          paths: [./node_modules]
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.8-node
+      - image: circleci/mysql:5.6
+        environment:
+          - MYSQL_ROOT_PASSWORD=rootpw
+          - MYSQL_DATABASE=testing
+          - MYSQL_USER=test
+          - MYSQL_PASSWORD=test
+
+    working_directory: ~/repo
+
+    steps:
+      - setup
+      - run:
+          # Our primary container isn't MYSQL so run a sleep command until it's ready.
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+            nc -z 127.0.0.1 3306 && echo Success && exit 0
+            echo -n .
+            sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+
+      - run:
+          name: Install MySQL Client
+          command: sudo apt update && sudo apt install default-mysql-client
+
+      - run:
+          name: Run Tests
+          command: |
+            mkdir -p test-reports/safety test-reports/mypy test-reports/pytest
+            poetry run black . --check
+            poetry run isort
+            poetry run safety check --json > test-reports/safety/results.json
+            poetry run mypy example --junit-xml=test-reports/mypy/results.xml
+            poetry run pytest --junitxml=test-reports/pytest/results.xml --cov=example
+            poetry run coverage xml
+
+      - store_test_results:
+          path: test-reports
+      - codecov/upload:
+          file: coverage.xml
+      - run:
+          name: Uninstall Package before Caching
+          command: poetry run pip uninstall example -y
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "poetry.lock" }}
+          paths: [./.venv]
+
+  build-angular-client:
+    docker:
+      - image: circleci/python:3.8-node
+
+    working_directory: ~/repo
+
+    steps:
+      - setup
+      - setup_remote_docker
+      - generate_client
+
+  build-and-deploy-dev:
+    docker:
+      - image: circleci/python:3.8-node
+
+    working_directory: ~/repo
+    steps:
+      - build
+      - run:
+          name: Deploy to Dev
+          command: sls deploy --stage dev
+
+  build-and-deploy-live:
+    docker:
+      - image: circleci/python:3.8-node
+
+    working_directory: ~/repo
+    steps:
+      - build
+      - run:
+          name: Deploy to Live
+          command: sls deploy --stage live
+
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /.*/
+          context: Gemfury
+      - build-angular-client:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v\.?([0-9]+\.){2}[0-9]+(-\w+\.\d+)?/ # Any Version
+            branches:
+              ignore: /.*/
+          context: Gemfury
+      - build-and-deploy-dev:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v\.?([0-9]+\.){2}[0-9]+-\w+\.\d+$/ # Pre-release Versions
+            branches:
+              ignore: /.*/
+          context: Serverless-projects
+      - build-and-deploy-live:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v\.?([0-9]+\.){2}[0-9]+$/ # Release Versions
+            branches:
+              ignore: /.*/
+          context: Serverless-projects

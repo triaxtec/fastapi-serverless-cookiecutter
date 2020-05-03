@@ -1,0 +1,40 @@
+site_name: FastAPI Serverless
+site_description: Generate FastAPI projects to deploy with Serverless.
+site_url: https://triaxtec.github.io/fastapi-serverless-cookiecutter
+
+theme:
+    name: 'material'
+    palette:
+        primary: 'blue'
+        accent: 'green'
+    icon:
+        repo: fontawesome/brands/github-alt
+
+repo_name: triaxtec/fastapi-serverless-cookiecutter
+repo_url: https://github.com/triaxtec/fastapi-serverless-cookicutter
+edit_uri: ''
+
+nav:
+    - Intro: 'README.md'
+    - Next Steps: 'next_steps.md'
+    - What's in the Box?:
+      - Top Level: 'what_you_get/top_level.md'
+      - pyproject.toml:
+        - What You Get - pyproject.toml: 'what_you_get/pyproject.md'
+        - Private PyPI: 'what_you_get/pyproject/private_pypi.md'
+        - Dependencies: 'what_you_get/pyproject/dependencies.md'
+        - Dev Dependencies: 'what_you_get/pyproject/dev_dependencies.md'
+        - CLI Entrypoint: 'what_you_get/pyproject/cli.md'
+        - Tasks: 'what_you_get/pyproject/taskipy.md'
+        - Black: 'what_you_get/pyproject/black.md'
+        - isort: 'what_you_get/pyproject/isort.md'
+        - coverage: 'what_you_get/pyproject/coverage.md'
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - markdown_include.include:
+        base_path: docs
+    - admonition
+    - codehilite:
+        linenums: true

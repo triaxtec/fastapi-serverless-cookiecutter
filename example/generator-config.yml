@@ -1,0 +1,6 @@
+npmName: example-angular-client
+npmRepository: https://npm.fury.io/my-org/
+ngVersion: 9.1.0
+modelPropertyNaming: snake_case
+stringEnums: true
+enumPropertyNaming: UPPERCASE

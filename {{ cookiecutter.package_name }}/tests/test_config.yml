@@ -1,0 +1,5 @@
+database_url: "mysql+pymysql://test:test@localhost/testing"
+
+security:
+  redirect_url: http://localhost:8000/docs/oauth2-redirect
+  secret: 'abcdefg'

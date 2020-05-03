@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "devDependencies": {
+    "serverless-domain-manager": "^3.3.2",
+    "serverless-python-requirements": "^5.1.0"
+  }
+}

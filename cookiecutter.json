@@ -1,0 +1,6 @@
+{
+    "package_name": "my-package",
+    "module_name": "{{ cookiecutter.package_name|replace('-','_') }}",
+    "pypi_url": "https://pypi.fury.io/my-org/",
+    "npm_url": "{{ cookiecutter.pypi_url | replace('pypi', 'npm') }}"
+}

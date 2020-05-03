@@ -1,0 +1,77 @@
+[tool.poetry]
+name = "example"
+version = "0.1.0"
+description = "A Fast API"
+authors = []  # You can put your name/email here if you like
+readme = "README.md"
+packages = [
+    {include = "example"},
+]
+classifiers = [
+    "Private :: Not For Publishing!"  # Prevents this from being accidentally published to public PyPI
+]
+include = ["example/CHANGELOG.md", "example/rds-ca-2019-root.pem"]
+
+[[tool.poetry.source]]
+name = "private"
+url = "https://pypi.fury.io/my-org/"
+
+[tool.poetry.dependencies]
+python = "==3.*,>=3.8.0"
+fastapi = ">=0.53.0"
+mangum = "^0.8.0"
+sqlalchemy = "^1.3.10"
+pymysql = "^0.9.3"
+secure = "^0.2.1"
+triax-flex-config = {version = "^1.1.0", extras = ["aws"]}
+semantic-version = "^2.8.4"
+markdown = "^3.1.1"
+
+[tool.poetry.dev-dependencies]
+uvicorn = "^0.11.3"
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+mypy = "*"
+sqlalchemy-stubs = ">=0.3"
+safety = "*"
+black = {version = ">=19.10b", allow-prereleases = true}
+taskipy = "*"
+isort = "*"
+typer = "^0.2.1"
+alembic = "^1.3.2"
+
+[tool.poetry.scripts]
+example = "cli:cli"  # For running management CLI in cli.py
+
+[tool.taskipy.tasks]
+migrate = "alembic revision --autogenerate -m "
+upgrade = "alembic upgrade heads"
+downgrade = "alembic downgrade -1"
+upgrade_dev = "alembic -x env=dev upgrade heads"
+downgrade_dev = "alembic -x env=dev downgrade -1"
+upgrade_live = "alembic -x env=live upgrade heads"
+downgrade_live = "alembic -x env=live downgrade -1"
+check = "safety check && isort --recursive --apply && black . && mypy example && pytest --cov=example"
+
+[tool.black]
+line-length = 120
+target_version = ['py38']
+exclude = '''
+(
+  /(
+    | \.git
+    | \.venv
+    | \.mypy_cache
+  )/
+)
+'''
+
+[tool.isort]
+line_length = 120
+skip = "migrations,.serverless,.venv,node_modules"
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.coverage.run]
+omit = ["example/__init__.py"]

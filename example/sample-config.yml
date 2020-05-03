@@ -1,0 +1,5 @@
+database_url: "mysql+pymysql://{username}:{password}}@localhost/example"
+
+security:
+  redirect_url: http://localhost:8000/docs/oauth2-redirect  # Change this to whatever front end you're using
+  secret: ""  # `openssl rand -hex 32`to generate this

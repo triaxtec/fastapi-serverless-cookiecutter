@@ -1,0 +1,5 @@
+# JetBrains IDE stuff
+.idea
+
+# Python stuff
+.venv
