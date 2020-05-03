@@ -10,6 +10,7 @@ is your private repository settings.
 
 #### If you are not using private repositories
 Remove anything that references private repositories in:
+
 1. [pyproject.toml](what_you_get/pyproject/private_pypi.md)
 1. [CircleCI Config](what_you_get/circleci.md)
 1. [Angular Client Config](what_you_get/generator_config.md)
