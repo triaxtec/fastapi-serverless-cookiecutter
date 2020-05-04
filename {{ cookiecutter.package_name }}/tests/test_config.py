@@ -6,5 +6,5 @@ def test_get_config_aws_load(mocker):
 
     config = config.get_config({"env": "testing"})
 
-    AWSSource.assert_called_once_with("spotr/testing")
+    AWSSource.assert_called_once_with("{{ cookiecutter.module_name }}/testing")
     assert config["custom_key"] == "custom_value"
