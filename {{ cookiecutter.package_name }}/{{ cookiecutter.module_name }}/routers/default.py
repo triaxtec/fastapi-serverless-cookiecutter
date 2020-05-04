@@ -5,7 +5,6 @@ from fastapi import APIRouter, Depends, FastAPI
 from markdown import markdown
 from starlette.responses import HTMLResponse
 
-
 router = APIRouter()
 
 

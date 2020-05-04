@@ -42,8 +42,8 @@ requires some source to set the database credentials, and the easiest way to do 
 
 ### Run the thing!
 To run your API locally now, do `uvicorn <module_name>.main:app`. You should be able to go to 
-[http://localhost:8000/docs](http://localhost:8000/docs) to see your fresh new API.
-
+[http://localhost:8000/docs](http://localhost:8000/docs) to see your fresh new API. You can also check out the one 
+included endpoint at [http://localhost:8000/changelog](http://localhost:8000/changelog)
 
 
 {!./hyperlinks.md!}

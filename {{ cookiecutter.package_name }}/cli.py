@@ -5,8 +5,7 @@ cli = typer.Typer()
 
 
 @cli.callback()
-def callback(
-):
+def callback():
     """
     CLI for managing {{ cookiecutter.package_name }}
     """

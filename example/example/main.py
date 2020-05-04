@@ -23,11 +23,7 @@ if (match := re.match(r".+\-(\D+)(\d+)", app_version)) is not None:  # pragma: n
     pre_release_num = match.group(2)
     app_version = app_version.replace(f"{pre_release_str}{pre_release_num}", f"{pre_release_str}.{pre_release_num}")
 
-app = FastAPI(
-    title="example",
-    description="A very Fast API",
-    version=app_version,
-)
+app = FastAPI(title="example", description="A very Fast API", version=app_version)
 database.init_db()
 register_routers(app)
 
