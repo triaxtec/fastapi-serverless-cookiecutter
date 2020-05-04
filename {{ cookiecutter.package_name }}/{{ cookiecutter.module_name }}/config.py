@@ -31,7 +31,7 @@ def get_config(override: Dict[str, Any] = None, prompt_db_creds: bool = False) -
     if env != "local":
         _app_config.load_sources(AWSSource(f"{{ cookiecutter.module_name }}/{env}"))
 
-    if prompt_db_creds:
+    if prompt_db_creds:  # pragma: no cover
         username = input("Username: ")
         password = getpass()
         main_url = re.sub(

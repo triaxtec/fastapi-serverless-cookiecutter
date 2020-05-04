@@ -16,7 +16,7 @@ def register_router(app: FastAPI) -> None:
 
 @lru_cache
 def _get_changelog_html() -> bytes:
-    changelog_path: Path = Path(__file__).parent / "CHANGELOG.md"
+    changelog_path: Path = Path(__file__).parent.parent / "CHANGELOG.md"
     _changelog_html = markdown(changelog_path.read_text())
     return _changelog_html
 
