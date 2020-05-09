@@ -7,7 +7,7 @@ in `pyproject.toml` is highlighted below for reference.
 1. [sqlalchemy]: An ORM- the best fully-featured ORM we've found.
 1. [alembic]: For managing database migrations with SQLAlchemy
 1. [pymysql]: A MySQL driver for Python- required to hook up SQLAlchemy to MySQL
-1. `triax-flex-config`: A package we developed to make configuring web apps easier.
+1. [flex-config]: A package we developed to make configuring web apps easier.
 1. [semantic-version]: Python does some weird stuff with your project version- we use this to make the published 
     version (in the OpenAPI document) follow standard [Semantic Versioning](https://semver.org/).
 1. [markdown]: For publishing CHANGELOG.md with the API so consumers can know what's going on.
@@ -20,6 +20,7 @@ in `pyproject.toml` is highlighted below for reference.
 [mangum]: https://erm.github.io/mangum/introduction/
 [sqlalchemy]: https://www.sqlalchemy.org/
 [pymysql]: https://pymysql.readthedocs.io/en/latest/
+[flex-config]: https://triaxtec.github.io/flex-config/
 [semantic-version]: https://python-semanticversion.readthedocs.io/en/latest/
 [markdown]: https://python-markdown.github.io/
 [secure]: https://secure.readthedocs.io/en/latest/

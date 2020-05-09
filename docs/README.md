@@ -3,11 +3,7 @@ If you are viewing this on GitHub, I recommend you check out the [hosted docs](h
  instead as not everything here is in standard Markdown.
  
 !!!warning
-    While this cookiecutter is functional as-is, there are two important issues right now you need to be aware of.
-    
-    1. Generated projects will make use of "triax-flex-config" which Triax intends to open source but has not done yet. 
-    This means generated projects won't work unless you remove it.
-    2. The documentation for this project is **far from complete**.
+    While this cookiecutter is functional as-is, the documentation for this project is **far from complete**.
 
 For generating FastAPI projects to be hosted on AWS Lambda using the Serverless framework. Includes everything that Triax 
 uses for its internal projects like:
